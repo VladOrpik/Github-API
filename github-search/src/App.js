@@ -8,14 +8,12 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [userNameQuery, setUserNamrQuery]= React.useState(null);
-  const token = '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';
+ 
   let url = 'https://api.github.com/search/repositories?q';
 
 function Filter(){
    fetch(`https://api.github.com/search/repositories?q=${inputValue}${userNameQuery? ' user:' + userNameQuery:""}`, {
-    headers: {
-      Authorization: `token ${token}`
-    }
+ 
    })
   .then((response) => {
     return response.json();
