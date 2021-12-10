@@ -5,7 +5,7 @@ function App() {
   const [inputValue, setinputValue] = React.useState("");
   const [repos, setRepos]= React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
-
+  const token = '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';
  React.useEffect(()=>{
    if(!inputValue){
      return;
@@ -13,7 +13,11 @@ function App() {
    
    setIsLoading(true);
 
-   fetch('https://api.github.com/search/repositories?q='+ inputValue)
+   fetch('https://api.github.com/search/repositories?q='+ inputValue, {
+    headers: {
+      Authorization: `token ${token}`
+    }
+   })
   .then((response) => {
     return response.json();
   })
@@ -28,23 +32,26 @@ function App() {
   return (
     <div className='app'>
       <h1 align="center">GitHub Search</h1>
-      <form onSubmit={evt=>{
+      <form onChange={evt=>{
         evt.preventDefault();
-        setinputValue(evt.target.elements.query.value);
+        setinputValue(evt.target.value);
       }} >
       <input className='form__input' type="text" name="query" placeholder="Поиск"/>
       </form>
       
-      {isLoading ? <div className='loading'>Loading</div> : null}
-
-      <ul>
-        {repos.map(repo=>{
+      {isLoading ? <div className='loading'>Loading</div> : <ul>
+        {repos ? 
+        repos.map(repo=>{
           return <li key={repo.id}>
              <a  href={repo.html_url}> {repo.name}</a>
              <p>{repo.description}</p>
+             <p> Количество  = {repo.forks_count}</p>
           </li>
-        })}
-      </ul>
+        }): null}
+        
+      </ul>}
+
+  
     </div>
   );
 }
