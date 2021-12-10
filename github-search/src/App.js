@@ -4,11 +4,14 @@ import './App.css';
 function App() {
   const [inputValue, setinputValue] = React.useState("");
   const [repos, setRepos]= React.useState([]);
+  const [isLoading, setIsLoading] = React.useState(false);
 
  React.useEffect(()=>{
    if(!inputValue){
      return;
    }
+   
+   setIsLoading(true);
 
    fetch('https://api.github.com/search/repositories?q='+ inputValue)
   .then((response) => {
@@ -16,6 +19,7 @@ function App() {
   })
   .then((data) => {
     console.log(data);
+    setIsLoading(false);
     setRepos(data.items);
   });
  },[inputValue])
@@ -29,6 +33,9 @@ function App() {
       }} >
       <input className='form__input' type="text" name="query" placeholder="Поиск"/>
       </form>
+      
+      {isLoading ? <div>Loading</div> : null}
+
       <ul>
         {repos.map(repo=>{
           return <li key={repo.id}>
