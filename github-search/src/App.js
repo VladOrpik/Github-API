@@ -27,6 +27,7 @@ function App() {
 
   return (
     <div className='app'>
+      <h1 align="center">GitHub Search</h1>
       <form onSubmit={evt=>{
         evt.preventDefault();
         setinputValue(evt.target.elements.query.value);
@@ -34,12 +35,12 @@ function App() {
       <input className='form__input' type="text" name="query" placeholder="Поиск"/>
       </form>
       
-      {isLoading ? <div>Loading</div> : null}
+      {isLoading ? <div className='loading'>Loading</div> : null}
 
       <ul>
         {repos.map(repo=>{
           return <li key={repo.id}>
-             <a href={repo.html_url}> {repo.name}</a>
+             <a  href={repo.html_url}> {repo.name}</a>
              <p>{repo.description}</p>
           </li>
         })}

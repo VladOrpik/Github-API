@@ -1,6 +1,12 @@
 .app{
   
 }
+body {
+	background: #121621;
+}
+h1{
+color: white;
+}
 .form__input {
   font-family: 'Roboto', sans-serif;
   color: #333;
@@ -15,11 +21,33 @@
   border-bottom: 0.3rem solid transparent;
   transition: all 0.3s;
 }
-
 .form__input:placeholder-shown + .form__label {
   opacity: 0;
   visibility: hidden;
   -webkit-transform: translateY(-4rem);
   transform: translateY(-4rem);
 }
+.loading{
+  color: white;
+  margin-left: 50px;
+}
+
+li{
+  background:radial-gradient(#9b59b6, #8e44ad);
+  width: 90%;
+}
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+p{
+  color: red;
+  font-size: 20px;
+}
+ul{
+  list-style: none;
+}
+
 
