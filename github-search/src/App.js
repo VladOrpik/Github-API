@@ -31,7 +31,10 @@ function App() {
       </form>
       <ul>
         {repos.map(repo=>{
-          return <li key={repo.id}>{repo.name}</li>
+          return <li key={repo.id}>
+             <a href={repo.html_url}> {repo.name}</a>
+             <p>{repo.description}</p>
+          </li>
         })}
       </ul>
     </div>
