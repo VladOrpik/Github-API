@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 
 function App() {
-  const [inputValue, setinputValue] = React.useState("")
+  const [inputValue, setinputValue] = React.useState("");
+  const [repos, setRepos]= React.useState([]);
 
  React.useEffect(()=>{
    if(!inputValue){
@@ -15,8 +16,10 @@ function App() {
   })
   .then((data) => {
     console.log(data);
+    setRepos(data.items);
   });
  },[inputValue])
+ console.log(repos);
 
   return (
     <div className='app'>
@@ -26,6 +29,11 @@ function App() {
       }} >
       <input className='form__input' type="text" name="query" placeholder="Поиск"/>
       </form>
+      <ul>
+        {repos.map(repo=>{
+          return <li>{repo.name}</li>
+        })}
+      </ul>
     </div>
   );
 }
