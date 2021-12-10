@@ -3,12 +3,20 @@ import './App.css';
 
 function App() {
   const [inputValue, setinputValue] = React.useState("")
-  console.log(inputValue)
+
  React.useEffect(()=>{
    if(!inputValue){
-     console.log("введите запрос")
+     return;
    }
- })
+
+   fetch('https://api.github.com/search/repositories?q='+ inputValue)
+  .then((response) => {
+    return response.json();
+  })
+  .then((data) => {
+    console.log(data);
+  });
+ },[inputValue])
 
   return (
     <div className='app'>
