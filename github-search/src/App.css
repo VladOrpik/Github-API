@@ -32,7 +32,7 @@ color: white;
   margin-left: 50px;
 }
 
-li{
+.newli{
   background:radial-gradient(#9b59b6, #8e44ad);
   width: 90%;
 }

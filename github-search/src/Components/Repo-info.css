@@ -1,0 +1,12 @@
+.newPage,.asd{
+    color: white;
+}
+.asd{
+    width: 80%;
+    margin: 0 auto;
+}
+li{
+    font-size: 35px;
+    border-radius: 3px solid red;
+    
+}
