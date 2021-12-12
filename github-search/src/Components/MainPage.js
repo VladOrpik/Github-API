@@ -61,7 +61,7 @@ function MainPage() {
           repos.map(repo=>{
             return (
                 <div className='newli'>
-            <Link  key={repo.id} to ={`/${repo.id}`}>
+            <Link  key={repo.id} to ={`/repo/${repo.id}`}>
                <a> {repo.name}</a>
                <p>{repo.description}</p>
                <p> Количество forks  = {repo.forks_count}</p>
